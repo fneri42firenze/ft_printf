@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:47:28 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 08:59:12 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/27 09:00:51 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ int	ft_puthex_up(unsigned int num)
 
 int	ft_pointer_puthex(void *ptr)
 {
-	unsigned long long num;
-	int		i;
-	char	num_hex_low;
-	int		rest;
+	unsigned long long	num;
+	int					i;
+	char				num_hex_low;
+	int					rest;
 
 	num = (unsigned long long)ptr;
 	i = 0;
