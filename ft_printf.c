@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filippomartinoneri <filippomartinoneri@    +#+  +:+       +#+        */
+/*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:07:33 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/26 18:38:02 by filippomart      ###   ########.fr       */
+/*   Updated: 2023/10/27 08:57:21 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,6 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
-	return (i);
-}
-
 int	select_format(va_list arguments, const char in)
 {
 	int	printable;
@@ -37,8 +27,8 @@ int	select_format(va_list arguments, const char in)
 		printable = ft_putchar(va_arg(arguments, int));
 	if (in == 's')
 		printable = ft_putstr(va_arg(arguments, char *));
-	// if (in == 'p')
-	// 	printable = ft_pointer_puthex(va_arg(arguments, unsigned long long));
+	if (in == 'p')
+		printable = ft_pointer_puthex(va_arg(arguments, void *));
 	if (in == 'd' || in == 'i')
 		printable = ft_putnbr(va_arg(arguments, int));
 	if (in == 'u')
@@ -54,11 +44,11 @@ int	select_format(va_list arguments, const char in)
 
 int	ft_printf(const char *in, ...)
 {
-	int	i;
-	int	printable;
+	int		i;
+	int		printable;
 	va_list	arguments;
-	
-	if(!in)
+
+	if (!in)
 		return (0);
 	i = 0;
 	printable = 0;
@@ -78,14 +68,15 @@ int	ft_printf(const char *in, ...)
 	return (printable);
 }
 
-int main()
-{
-	// char c;
-	// c = 'c';
-	// char *str;
-	// str = "Hello World!";
-	// ft_printf("LA STRINGA E' %s\n", str);
-	// int i;
-	// i = 255;
-	// ft_printf("LA STRINGA E' %X\n", i);
-}
+// int main()
+// {
+// 	char c;
+// 	c = 'c';
+// 	char *str;
+// 	str = "Hello World!";
+// 	ft_printf("LA STRINGA E' %s\n", str);
+// 	int i;
+// 	i = 255;
+// 	ft_printf("LA STRINGA E' %X\n", i);
+
+// }
