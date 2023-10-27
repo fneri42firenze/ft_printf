@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:07:33 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 12:10:47 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/27 13:32:03 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_invert(char *array)
 
 	i = 0;
 	j = ft_strlen(array) - 1;
+	temp = 0;
 	while (i < j)
 	{
 		if (array[i] == '-')
@@ -108,8 +109,8 @@ int	ft_printf(const char *in, ...)
 // 	// c = 'c';
 // 	// char *str;
 // 	// str = "Hello World!";
-// 	printf("%i\n", ft_printf("LA STRINGA E' %d\n", -101));
-// 	printf("%i\n", printf("LA STRINGA E' %d\n", -101));
+// 	printf("%i\n", ft_printf(" %x ", 0));
+// 	printf("%i\n", printf(" %x ", 0));
 // 	// int i;
 // 	// 	i = 255;
 // 	// 	ft_printf("LA STRINGA E' %X\n", i);
