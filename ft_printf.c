@@ -6,11 +6,45 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:07:33 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 08:57:21 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/27 12:10:47 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_invert(char *array)
+{
+	int		i;
+	int		j;
+	char	temp;
+
+	i = 0;
+	j = ft_strlen(array) - 1;
+	while (i < j)
+	{
+		if (array[i] == '-')
+			i++;
+		else
+		{
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+			i++;
+			j--;
+		}
+	}
+	ft_putstr((char *)array);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	ft_putchar(char c)
 {
@@ -61,7 +95,7 @@ int	ft_printf(const char *in, ...)
 			i++;
 		}
 		else
-			printable = ft_putchar(in[i]);
+			printable += ft_putchar(in[i]);
 		i++;
 	}
 	va_end(arguments);
@@ -70,13 +104,13 @@ int	ft_printf(const char *in, ...)
 
 // int main()
 // {
-// 	char c;
-// 	c = 'c';
-// 	char *str;
-// 	str = "Hello World!";
-// 	ft_printf("LA STRINGA E' %s\n", str);
-// 	int i;
-// 	i = 255;
-// 	ft_printf("LA STRINGA E' %X\n", i);
-
+// 	// char c;
+// 	// c = 'c';
+// 	// char *str;
+// 	// str = "Hello World!";
+// 	printf("%i\n", ft_printf("LA STRINGA E' %d\n", -101));
+// 	printf("%i\n", printf("LA STRINGA E' %d\n", -101));
+// 	// int i;
+// 	// 	i = 255;
+// 	// 	ft_printf("LA STRINGA E' %X\n", i);
 // }

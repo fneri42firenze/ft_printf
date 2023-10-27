@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:47:28 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 09:00:51 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/27 12:09:51 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,39 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		ft_putchar(str[i++]);
 	return (i);
 }
 
-int	ft_putnbr(int i)
+int	ft_putnbr(long i)
 {
+	int		count;
+	char	array[30];
+
+	count = 0;
 	if (i == 0)
-		ft_putchar('0');
-	else if (i == -2147483648)
-		ft_putstr("-2147483648");
-	else
 	{
-		if (i < 0)
-		{
-			ft_putchar('-');
-			i = -i;
-		}
-		if (i / 10 != 0)
-			ft_putnbr(i / 10);
-		ft_putchar(i % 10 + '0');
+		ft_putchar('0');
+		return (1);
 	}
-	return (1);
+	if (i < 0)
+	{
+		array[count] = '-';
+		i = -i;
+		count++;
+	}
+	while (i >= 10)
+	{
+		array[count] = ((i % 10) + '0');
+		i = i / 10;
+		count ++;
+	}
+	array[count] = (i + '0');
+	ft_invert((char *)array);
+	return (count + 1);
 }
 
 int	ft_puthex_low(unsigned int num)

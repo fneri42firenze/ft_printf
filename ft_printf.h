@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:52:59 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 08:53:31 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/27 11:34:41 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
+int		ft_printf(const char *in, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
-int		ft_putnbr(int i);
+int		ft_putnbr(long i);
 int		ft_puthex_low(unsigned int num);
 int		ft_puthex_up(unsigned int num);
+int		ft_pointer_puthex(void *ptr);
+int		ft_strlen(const char *str);
+void	ft_invert(char *array);
 #endif
