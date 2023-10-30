@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:47:28 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/30 13:19:48 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/30 14:16:35 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_putstr(char *str)
 int	ft_putnbr(long i)
 {
 	int		count;
-	
+
 	count = 0;
 	if (i == 0)
 		return (ft_putchar('0'));
@@ -38,10 +38,8 @@ int	ft_putnbr(long i)
 		count++;
 	}
 	if (i >= 10)
-	{
 		count += ft_putnbr(i / 10);
-		count += ft_putnbr(i % 10);
-	}
+	count += ft_putchar((i % 10) + '0');
 	return (count);
 }
 
@@ -79,21 +77,23 @@ int	ft_puthex_up(unsigned int num)
 	return (count);
 }
 
-int	ft_pointer_puthex(void *ptr)
+int	ft_pointer_puthex(uintptr_t ptr, int w)
 {
-	unsigned long long	num;
 	int		count;
 	char	*num_hex_low;
-	
+
 	num_hex_low = "0123456789abcdef";
-	num = (unsigned long long)ptr;
 	count = 0;
-	if (num >= 16)
+	if (!ptr && !w)
+		return (ft_putstr("(nil)"));
+	if (w == 0)
+		count += ft_putstr("0x");
+	if (ptr >= 16)
 	{
-		count += ft_puthex_low(num / 16);
-		count += ft_puthex_low(num % 16);
+		count += ft_pointer_puthex(ptr / 16, 1);
+		count += ft_pointer_puthex(ptr % 16, 1);
 	}
 	else
-		count += ft_putchar(num_hex_low[num]);
+		count += ft_putchar(num_hex_low[ptr]);
 	return (count);
 }

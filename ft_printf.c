@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:07:33 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/30 12:26:20 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/30 14:08:06 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	select_format(va_list arguments, const char in)
 	if (in == 's')
 		printable = ft_putstr(va_arg(arguments, char *));
 	if (in == 'p')
-		printable = ft_pointer_puthex(va_arg(arguments, void *));
+		printable = ft_pointer_puthex(va_arg(arguments, uintptr_t), 0);
 	if (in == 'd' || in == 'i')
 		printable = ft_putnbr(va_arg(arguments, int));
 	if (in == 'u')
