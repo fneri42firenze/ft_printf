@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:47:28 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 13:31:54 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/30 13:19:48 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putstr(char *str)
 
 	i = 0;
 	if (!str)
-		return (0);
+		return (ft_putstr("(null)"));
 	while (str[i])
 		ft_putchar(str[i++]);
 	return (i);
@@ -27,110 +27,73 @@ int	ft_putstr(char *str)
 int	ft_putnbr(long i)
 {
 	int		count;
-	char	array[30];
-
+	
 	count = 0;
 	if (i == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+		return (ft_putchar('0'));
 	if (i < 0)
 	{
-		array[count] = '-';
-		i = -i;
+		ft_putchar('-');
+		i *= -1;
 		count++;
 	}
-	while (i >= 10)
+	if (i >= 10)
 	{
-		array[count] = ((i % 10) + '0');
-		i = i / 10;
-		count ++;
+		count += ft_putnbr(i / 10);
+		count += ft_putnbr(i % 10);
 	}
-	array[count] = (i + '0');
-	array[count + 1] = '\0';
-	ft_invert((char *)array);
-	return (count + 1);
+	return (count);
 }
 
 int	ft_puthex_low(unsigned int num)
 {
-	char	num_hex_low[30];
+	char	*num_hex_low;
 	int		count;
 
+	num_hex_low = "0123456789abcdef";
 	count = 0;
-	if (num == 0)
-		num_hex_low[count] = '0';
-	while (num > 10)
+	if (num >= 16)
 	{
-		if((num % 16) < 10)
-			num_hex_low[count] = ((num % 16) + '0');
-		else
-			num_hex_low[count] = ((num % 16) + 'a' - 10);
-		num /= 16;
-		count++;
+		count += ft_puthex_low(num / 16);
+		count += ft_puthex_low(num % 16);
 	}
-	while(num > 0)
-	{
-		num_hex_low[count] = ((num % 16) + '0');
-		num /= 16;
-	}
-	num_hex_low[count + 1] = '\0';
-	ft_invert((char *)num_hex_low);
-	return (count + 1);
+	else
+		count += ft_putchar(num_hex_low[num]);
+	return (count);
 }
 
 int	ft_puthex_up(unsigned int num)
 {
-	char	num_hex_up[30];
+	char	*num_hex_up;
 	int		count;
 
+	num_hex_up = "0123456789ABCDEF";
 	count = 0;
-	if (num == 0)
-		num_hex_up[count] = '0';
-	while (num > 10)
+	if (num >= 16)
 	{
-		if((num % 16) < 10)
-			num_hex_up[count] = ((num % 16) + '0');
-		else
-			num_hex_up[count] = ((num % 16) + 'a' - 10);
-		num /= 16;
-		count++;
+		count += ft_puthex_up(num / 16);
+		count += ft_puthex_up(num % 16);
 	}
-	while(num > 0)
-	{
-		num_hex_up[count] = ((num % 16) + '0');
-		num /= 16;
-	}
-	num_hex_up[count + 1] = '\0';
-	ft_invert((char *)num_hex_up);
-	return (count + 1);
+	else
+		count += ft_putchar(num_hex_up[num]);
+	return (count);
 }
 
 int	ft_pointer_puthex(void *ptr)
 {
 	unsigned long long	num;
-	int					i;
-	char				num_hex_low;
-	int					rest;
-
+	int		count;
+	char	*num_hex_low;
+	
+	num_hex_low = "0123456789abcdef";
 	num = (unsigned long long)ptr;
-	i = 0;
-	if (num == 0)
+	count = 0;
+	if (num >= 16)
 	{
-		ft_putchar('0');
-		return (1);
+		count += ft_puthex_low(num / 16);
+		count += ft_puthex_low(num % 16);
 	}
-	while (num > 0)
-	{
-		rest = num % 16;
-		if (rest < 10)
-			num_hex_low = rest + '0';
-		else
-			num_hex_low = rest + 'a' - 10;
-		ft_putchar(num_hex_low);
-		num /= 16;
-		i++;
-	}
-	return (i);
+	else
+		count += ft_putchar(num_hex_low[num]);
+	return (count);
 }

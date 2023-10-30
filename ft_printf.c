@@ -6,46 +6,11 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:07:33 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 13:32:03 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/30 12:26:20 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_invert(char *array)
-{
-	int		i;
-	int		j;
-	char	temp;
-
-	i = 0;
-	j = ft_strlen(array) - 1;
-	temp = 0;
-	while (i < j)
-	{
-		if (array[i] == '-')
-			i++;
-		else
-		{
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-			i++;
-			j--;
-		}
-	}
-	ft_putstr((char *)array);
-}
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int	ft_putchar(char c)
 {

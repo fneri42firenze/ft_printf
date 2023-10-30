@@ -6,7 +6,7 @@
 /*   By: fneri <fneri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:52:59 by fneri             #+#    #+#             */
-/*   Updated: 2023/10/27 12:30:53 by fneri            ###   ########.fr       */
+/*   Updated: 2023/10/30 12:27:00 by fneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,4 @@ int		ft_putnbr(long i);
 int		ft_puthex_low(unsigned int num);
 int		ft_puthex_up(unsigned int num);
 int		ft_pointer_puthex(void *ptr);
-int		ft_strlen(const char *str);
-void	ft_invert(char *array);
 #endif
