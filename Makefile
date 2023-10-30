@@ -6,7 +6,7 @@
 #    By: fneri <fneri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 09:02:19 by fneri             #+#    #+#              #
-#    Updated: 2023/10/27 09:18:15 by fneri            ###   ########.fr        #
+#    Updated: 2023/10/30 17:58:40 by fneri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-SRCS = ft_printf.c\
+SRCS = ft_printf.c \
 		ft_printf_utils.c
 OBJS = $(SRCS:.c=.o)
 
